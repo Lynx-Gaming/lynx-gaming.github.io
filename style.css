@@ -85,7 +85,8 @@ navbar{
 
 .button {
 	background-color: #1c87c9;
-    border: none;
+    border: 2px solid #026CB3;
+	border-radius: 8px;
     color: white;
     padding: 20px 34px;
     text-align: center;
@@ -94,6 +95,19 @@ navbar{
     font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
+	-webkit-transition-duration: 0.2s; /* Safari */
+	transition-duration: 0.2s;
+}
+
+.button:hover {
+	background-color: #026CB3;
+	color: white;
+	padding: 18px 32px;
+}
+
+.button:active {
+	box-shadow: 0 5px #3D3D3D;
+	transform: translateY(4px);
 }
 
 
