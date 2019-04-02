@@ -85,7 +85,6 @@ navbar{
 
 .button {
 	background-color: #1c87c9;
-    border: 2px solid #026CB3;
 	border-radius: 8px;
     color: white;
     padding: 20px 34px;
@@ -112,5 +111,5 @@ navbar{
 
 
 #tsscript {
-	margin-left: 30px;
+	margin-left: 15px;
 }
