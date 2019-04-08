@@ -21,7 +21,6 @@ navbar{
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  margin:0;
 }
 
 /* Style the links inside the navigation bar */
