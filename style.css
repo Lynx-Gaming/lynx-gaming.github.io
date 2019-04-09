@@ -78,7 +78,7 @@ navbar{
 /* Style the footer */
 .footer {
   background-color: #000000;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -118,4 +118,8 @@ navbar{
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+#header {
+	margin-bottom: -4px;
 }
