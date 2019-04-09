@@ -1,53 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>United Survivors</title>
-	<link rel="shortcut icon" href="images/IMG_0658.PNG" />
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Password Protected Page</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #dialogText {
+            padding: 10px 30px;
+            color: white;
+            background-color: #333333;
+        }
+        
+        #dialogWrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: table;
+            background-color: #EEEEEE;
+        }
+        
+        #dialogWrapCell {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        #mainDialog {
+            max-width: 400px;
+            margin: 5px;
+            border: solid #AAAAAA 1px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 5px 3px #AAAAAA;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            text-align: left;
+        }
+        #passArea {
+            padding: 20px 30px;
+            background-color: white;
+        }
+        #passArea > * {
+            margin: 5px auto;
+        }
+        #pass {
+            width: 100%;
+            height: 40px;
+            font-size: 30px;
+        }
+        
+        #messageWrapper {
+            float: left;
+            vertical-align: middle;
+            line-height: 30px;
+        }
+        
+        .notifyText {
+            display: none;
+        }
+        
+        #invalidPass {
+            color: red;
+        }
+        
+        #success {
+            color: green;
+        }
+        
+        #submitPass {
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: #E7E7E7;
+            border: solid gray 1px;
+            float: right;
+        }
+        #contentFrame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+  </head>
+  <body>
+    <iframe id="contentFrame" frameBorder="0" allowfullscreen></iframe>
+    <div id="dialogWrap">
+        <div id="dialogWrapCell">
+            <div id="mainDialog">
+                <div id="dialogText">This page is password protected.</div>
+                <div id="passArea">
+                    <p id="passwordPrompt">Password</p>
+                    <input id="pass" type="password" name="pass">
+                    <div>
+                        <span id="messageWrapper">
+                            <span id="invalidPass" class="notifyText">Sorry, please try again.</span>
+                            <span id="success" class="notifyText">Success!</span>
+                            &nbsp;
+                        </span>
+                        <button id="submitPass" type="button">Submit</button>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+    <script>
+        /*! srcdoc-polyfill - v0.1.1 - 2013-03-01
+        * http://github.com/jugglinmike/srcdoc-polyfill/
+        * Copyright (c) 2013 Mike Pennisi; Licensed MIT */
+        (function( window, document, undefined ) {
+	
+	        var idx, iframes;
+	        var _srcDoc = window.srcDoc;
+	        var isCompliant = !!("srcdoc" in document.createElement("iframe"));
+	        var implementations = {
+		        compliant: function( iframe, content ) {
 
-<a href="/"><img src="images/Header5.png" alt="Header"></a>
+			        if (content) {
+				        iframe.setAttribute("srcdoc", content);
+			        }
+		        },
+		        legacy: function( iframe, content ) {
 
-<div class="topnav">
-  <a href="/">Home</a>
-  <a href="about">About</a>
-  <a href="test">Test</a>
-</div>
+			        var jsUrl;
 
-<div class="row">
-  <div class="column side">
-    <h2>Social:</h2>
-    <p>*List of our social accounts*</p>
-	<br>
-	<h4>GitHub for this website:</h4>
-	<a href="https://github.com/united-survivors/united-survivors.github.io" target=_blank class="button">GitHub</a>
-  </div>
-  
-  <div class="column middle">
-	<h1>Secret Page...</h1>
-	</div>
-  
-  <div class="column side">
-    <br><br>
-	<a href="ts3server://ts.unitedsurvivors.org?port=9987" class="button">Join Us On TeamSpeak!</a>
-	<br><br>
-	<div id="tsscript">
-	<div id="ts3viewer_1090443" style="width:300px; "> </div>
+			        if (!iframe || !iframe.getAttribute) {
+				        return;
+			        }
 
-	<script src="https://static.tsviewer.com/short_expire/js/ts3viewer_loader.js"></script>
-	<script>
-	var ts3v_url_1 = "https://www.tsviewer.com/ts3viewer.php?ID=1090443&text=ffffff&text_size=12&text_family=4&text_s_color=ffffff&text_s_weight=normal&text_s_style=normal&text_s_variant=normal&text_s_decoration=none&text_i_color=&text_i_weight=normal&text_i_style=normal&text_i_variant=normal&text_i_decoration=none&text_c_color=&text_c_weight=normal&text_c_style=normal&text_c_variant=normal&text_c_decoration=none&text_u_color=ffffff&text_u_weight=normal&text_u_style=normal&text_u_variant=normal&text_u_decoration=none&text_s_color_h=&text_s_weight_h=bold&text_s_style_h=normal&text_s_variant_h=normal&text_s_decoration_h=none&text_i_color_h=ffffff&text_i_weight_h=bold&text_i_style_h=normal&text_i_variant_h=normal&text_i_decoration_h=none&text_c_color_h=&text_c_weight_h=normal&text_c_style_h=normal&text_c_variant_h=normal&text_c_decoration_h=none&text_u_color_h=&text_u_weight_h=bold&text_u_style_h=normal&text_u_variant_h=normal&text_u_decoration_h=none&flags=0&iconset=default_colored_2014";
-	ts3v_display.init(ts3v_url_1, 1090443, 100);
-	</script>
-	</div>
-  </div>
-</div>
+			        if (!content) {
+				        content = iframe.getAttribute("srcdoc");
+			        } else {
+				        iframe.setAttribute("srcdoc", content);
+			        }
 
-<div class="footer">
-  <a href="https://unitedsurvivors.org/contact-us/" target=_blank>Contact</a>
-</div>
-  
-</body>
+			        if (content) {
+				        // The value returned by a script-targeted URL will be used as
+				        // the iFrame's content. Create such a URL which returns the
+				        // iFrame element's `srcdoc` attribute.
+				        jsUrl = "javascript: window.frameElement.getAttribute('srcdoc');";
+
+				        iframe.setAttribute("src", jsUrl);
+
+				        // Explicitly set the iFrame's window.location for
+				        // compatability with IE9, which does not react to changes in
+				        // the `src` attribute when it is a `javascript:` URL, for
+				        // some reason
+				        if (iframe.contentWindow) {
+					        iframe.contentWindow.location = jsUrl;
+				        }
+			        }
+		        }
+	        };
+	        var srcDoc = window.srcDoc = {
+		        // Assume the best
+		        set: implementations.compliant,
+		        noConflict: function() {
+			        window.srcDoc = _srcDoc;
+			        return srcDoc;
+		        }
+	        };
+
+	        // If the browser supports srcdoc, no shimming is necessary
+	        if (isCompliant) {
+		        return;
+	        }
+
+	        srcDoc.set = implementations.legacy;
+
+	        // Automatically shim any iframes already present in the document
+	        iframes = document.getElementsByTagName("iframe");
+	        idx = iframes.length;
+
+	        while (idx--) {
+		        srcDoc.set( iframes[idx] );
+	        }
+
+        }( this, this.document ));
+    </script>
+    <script>
+        var pl = {"salt":"DLQeggoeGlwA6MIMFiJqOeqgyfg26PeUdDifUNE5Uyc=","iv":"QSkRyMBmwKA3LjNsJT5/pA==","data":"WkTlKcx+iugb05s6PERJKkmYIWCXzUMMf7fP0B+Q3KhaHlIxNadLtyxO3iZTwTfIi5gIyKwBjgpQFZp95fHNMOuCK8zOV1LDYN/euDBJwVczTzq5c3jc8EZg2tLFzJyTi1vea2a3SlP39YQVLD8sXLnFYTDH4aCPDDmsya5VFrykVC17p4wiURbEcXMeu+CRx5VPBLGlZPO7zf5nrQGQWbF+bTo+7m6E2uDLcLPzVKI/aJZfntuxuV7tF/CQWZPY7ofxeIIX2ExzsXjl3TkaFZrDc7nBgeYnoMUljjRymG69WG/3UWSsXxlCtEGllWgsNzcDg8N+9C6qplcyn8i93JywbtoK1K4Qn8/T78ajo/Kbg6pPIuE//StgLdftygwlk2QB0mdOnnCFtZee7R8p0BfWhZdYYf/TuuLMnB6JcgAj03GdUm/R+bWF3Tnj68u8lTpuykEeSUsKlBhHSuaHC1i7u2eU4qJuSXhryDmGsuSNpm+m5wZIIJ6wzyxwFsiARpsoFVtbg3PW9exd6rEiKhpyoaw8Qkjz5/jxDH6OMZsHPCZbl5hmGiRGexbBYiK7rzOM74mqeg1jNGEl0gGJZnejJ4L0rUf/L5zOC1l9Spm2TJWnfSsJMjDvYQ1Weblewf7jrgRa1CDv/UNh43mn+bRHkSVNpSpjQ+A5b0KvffAzNMwYZVjzPAUbEj7rFmprV0OS79Q4W6KXv/s9osQHudhJfzqNUd1WBN6bAfiMWMJPj9PFL9XEmpXHsoSAGZfHIld+rq9yjWDbYmFWDLlcUEZaVWBaLIvPjTOys15vPS4iAkKfEUp+uHhCcjMVqdtmAhdqD4yX7GVhwmBpGHIceycz1h9XHA9jJi1I7t+IaHKOqFq7yxDX55uGjKbzVcefJssjG9jiFjrGqFk7FDKx8V/HFzuZrTsS9kiH/ab6IQxdjUEtiJ92rxJaOKlfUzTXvo51V/CvARkwxj4Up+27wGAFZN+YxMMY74wvSUpFCyCNCNYTYymcj915t0rF/GoPqY6iYkWXoZ+Rut4gAlMCU18FQl/auc/VDrw827t0uk7GAS6Ld7TjC+vtdFn2bu6X8tGPFsOIwViHKiRx58nG5yhnOn34cEUi/75ag6V0mVRgwCAQTyhhW5wfnGZHhMKZUOaYLKFhY6ZmzygfjKbBNgTEGY90crJ9QNgiHGlqE9LyJs4V+W4AmJV7l4djwdXEuA6VfVPZiFQKtg0Gj/vh29IzgZsto1s/ap/S/8HWqcDaAOhYh9k171PHzpQuOXxC8iWPw2gPjj79kCwFlfSwPdkGlPxCZRWU7tcN9Hj+lAErjV8vLZ8rjmjnkTuWXtyF3z9DEFl8zz2D31T+o4AmA/MqjbAxw27V2DCCfVq7gXSATvsn5obzLdZ4CBGSJSLFw5+6auUU+59kfw+N3PUp8SwFxlzrtq+XhJo4yYXrhq1V2HjfZEsmIPSPlR2DT96/XZZpoadEcpTJQ58q75VsGmC8DdvhoUgnCL3jivEIp4pBI7S8JEJAR2lD+tsRFeDI3zk02wTX0NU9Sb2WaQ8wupOvUsr2WjBr2jPi2fWm0grV+49rRZ0PmXz9PDYRV4X6hazYqiXsivVSIz4y5VaLkIkxvsk7Jxmdn/LhB5onQU4vDQZ+FEZaTG8kh2EsTbUdWxNVQpgc3C9MaE1sre8QMT7xZNWAIZiss3bBhIx+NE1VnxEaKSNxtIJAujxbXxBoO6uRUd7V/Ni1fsdVAFGeWZ+A8sJRtP3V1A5SSlbrMSYEBvbhv/9gCbQ04qzNka5z0Le6YORlEqcvSSave5RrMWphGaiZt7PrYZP1Lc+58XfYxou1kNpzYxZt4hSnVJmFgNoqXwntFRZeUISNkQgVE6GzjQXr4YWEcDIQWMOD2tnQ4CBgHMa2VZsf1cuwGEBtxtmzgpgUgT22IZpxxxlqLtY0/W8kpSRXmhuDn4VfVjFQ4Z0hR0qVt8Ym4IhqM4pNnaS/A38tM7pHo9NRsixeKY+/721upho7Z6rEdCsxrP7NpNjWKQGwGCPjFZDKke2nkn+idibUWylrYKWWad2Y5eZ9lUo8OcDIk9ZOSDvV5gpxjX62OaCpnBoas9u8pgC0JYT3yhTzplcVwKuyQO4S4/oMEtd0tlVuLW4W8Xi/yCAMyi4zakLqtIPWEXZ76Yf6ildgqOCyfD+zjy8tuJWiagicT2tKkjq+U7hmUWi8H5Bx33sfj5/ekPrcV7/455jjdoK82ggOuoBm/cc33KzzVgvjdzcqDKFWdvR0Fy8FFptBLiy9j4xifD8SrDaJnz0QeCF1gTUj+LD3tFpI0+815Qqoaveye0eNxhWJk/BOM/Fjrkr3xQ1vYbNbn2Kp2HzQHs/RUSUu36TqQn9OhPTXvKwMXz+8pmFXcEOpOxsv26mDx6zlJgcMY3NI1HzRnI0yUl/UpTQKQUBiPujIfIEc8BSIFX+3aYFvUUXF9AtMmOpujKGfStTMa+ztCMWrjF/eAUUfW9qPVGvO/ij7dXipM5KDaiib5kB+TE7Qz9n5dM7/5rnua/Q7x4pDFwojG2wR+rT92LbyIIzq5JZuwwR24Gb8AGESOdWx/1TKJtR/4NwppeaujC6nuK2tjuaPSUAhTUq+wWA02zPzxxuLPQhqP09jWjG605+VBuATdbyHm4IYOacZidApuYG0GV5JAEX20FNPkeX9FQWrEGHqAuRLB5/w2adqRTSQfHs86nK5o1QUiF1P+zxk1uOpiIavaJyLmo0gQy08567z8gw4lbveiEORiNZZVcCf1r1T34fUhw4jNuJpCgGGWFlKUmQMOwT1Oxhyf2l9PSd1WXSAxso3Xnw8CHOBy6tlz9oIoLw8GIJZuWQJThW1OZB/10itqZKX9cM1W3jUMcunMEQqykxqy95K+4idszxDq7qmst46StIkDZTIpDc11yz2AgVirBxCqnCMG1ST4xbkl15Ken2cHOqeq/zstMqnSMw9Emx9YicDR9eUPpCgbedSK8ilYW4str7O3bJdCYAl/8pzsQm1j+Jy/UQVld8xZi2WCfUEdt0p2PsMgWRZbDhVzpRzyUhThivHK3ufVOBOM1mmsX3OEraVwJBeIFAJfviVJoDbA3iUtZM4nSsV1MGUVMbLhIcVTGg90LeNeMv4SfvqSdbbtQ=="};
+        
+        var submitPass = document.getElementById('submitPass');
+        var passEl = document.getElementById('pass');
+        var invalidPassEl = document.getElementById('invalidPass');
+        var successEl = document.getElementById('success');
+        var contentFrame = document.getElementById('contentFrame');
+        
+        if (pl === "") {
+            submitPass.disabled = true;
+            passEl.disabled = true;
+            alert("This page is meant to be used with the encryption tool. It doesn't work standalone.");
+        }
+        
+        function doSubmit(evt) {
+            try {
+                var decrypted = decryptFile(CryptoJS.enc.Base64.parse(pl.data), passEl.value, CryptoJS.enc.Base64.parse(pl.salt), CryptoJS.enc.Base64.parse(pl.iv));
+                if (decrypted === "") throw "No data returned";
+                
+                // Set default iframe link targets to _top so all links break out of the iframe
+                decrypted = decrypted.replace("<head>", "<head><base href=\".\" target=\"_top\">");
+                
+                srcDoc.set(contentFrame, decrypted);
+                
+                successEl.style.display = "inline";
+                passEl.disabled = true;
+                submitPass.disabled = true;
+                setTimeout(function() {
+                    dialogWrap.style.display = "none";
+                }, 1000);
+            } catch (e) {
+                invalidPassEl.style.display = "inline";
+                passEl.value = "";
+            }
+        }
+        
+        submitPass.onclick = doSubmit;
+        passEl.onkeypress = function(e){
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            invalidPassEl.style.display = "none";
+            if (keyCode == '13'){
+              // Enter pressed
+              doSubmit();
+              return false;
+            }
+        }
+        
+        function decryptFile(contents, password, salt, iv) {
+            var _cp = CryptoJS.lib.CipherParams.create({
+                ciphertext: contents
+            });
+            var key = CryptoJS.PBKDF2(password, salt, { keySize: 256/32, iterations: 100 });
+            var decrypted = CryptoJS.AES.decrypt(_cp, key, {iv: iv});
+            
+            return decrypted.toString(CryptoJS.enc.Utf8);
+        }
+    </script>
+  </body>
 </html>
