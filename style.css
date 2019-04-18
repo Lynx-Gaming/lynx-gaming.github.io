@@ -16,7 +16,9 @@ navbar{
 }
 
 .topnav {
-  background-color: #000000;
+  background-color: rgba(36, 36, 36, .7);
+  padding-top: 10px;
+  padding-bottom: 10px;
   overflow: hidden;
   position: -webkit-sticky; /* Safari */
   position: sticky;
@@ -25,17 +27,21 @@ navbar{
 
 /* Style the links inside the navigation bar */
 .topnav a {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 7px;
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 50px;
   text-decoration: none;
   font-size: 17px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #1c87c9;
   color: black;
 }
 
@@ -43,6 +49,7 @@ navbar{
 .topnav a.active {
   background-color: #1c87c9;
   color: white;
+  border-radius: 7px;
 }
 
 /* Create three unequal columns that floats next to each other */
@@ -121,5 +128,5 @@ img {
 }
 
 #header {
-	margin-bottom: -4px;
+	margin-top: -70px;
 }
