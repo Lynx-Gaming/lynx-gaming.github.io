@@ -4,30 +4,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Lynx Gaming</title>
 	<link rel="shortcut icon" href="images/Logo.png" />
-	<link rel="stylesheet" type="text/css" href="teststyle.css">
+	<link rel="stylesheet" type="text/css" href="dropdown.css">
 </head>
 <body>
+
+<div class="topnav">
+  <a class="active" href="/">Home</a>
+  <a href="about">About</a>
+  <a href="test">Test</a>
+  <a href="calendar">Calendar</a>
+	<div class="dropdown">
+		<button class="dropbtn">Dropdown</button>
+		<div class="dropdown-content">
+		<a href="#">Link 1</a>
+		<a href="#">Link 2</a>
+		<a href="#">Link 3</a>
+		</div>
+	</div> 
+</div>
+
 <div id="header">
 <a href="/"><img src="images/Header.png" alt="Header"></a>
 </div>
-
-<ul class="topnav">
-  <li><a href="/">Home</a></li>
-  <li><a class="active" href="test">Test</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="about">About</a></li>
-
-  <li class="dropdown right">
-    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-    <div class="dropdown-content">
-      <a href="/">Home</a>
-      <a href="about">About</a>
-      <a href="test">Test</a>
-	  <a href="calendar">Calendar</a>
-    </div>
-  </li>
-</ul>
 
 <div class="row">
   <div class="column side">
@@ -37,42 +35,15 @@
 	<h4>GitHub for this website:</h4>
 	<a href="https://github.com/Lynx-Gaming/lynx-gaming.github.io" target=_blank class="button">GitHub</a>
   </div>
-
+  
   <div class="column middle">
-	<h1>Test page</h1>
-	<p>This page is made to try out new things for the website. Don't expect things here to work....</p>
-	<a href="secure" class="button">Secure Page</a>
-	<br><br><br><br>
-	<img src="images/Header.png" alt="Header" style="width:500px;">
+	<h1>Lynx Gaming</h1>
 	<br>
-	<a href="images/IMG_0700.png" target=_blank class="button">Header</a>
-	<br><br><br>
-	<img src="images/Logo.png" alt="Logo" style="width:500px;">
-	<br>
-	<a href="images/Logo.png" target=_blank class="button">Logo</a>
-	<br><br><br><br>
-	
-	<h2>Archived images</h2>
-	
-	<img src="images/archive/HeaderNew.png" alt="New Header" style="width:500px;">
-	<br>
-	<a href="images/archive/HeaderNew.png" target=_blank class="button">New Header</a>
-	<br><br><br>
-	<img src="images/archive/HeaderOld.png" alt="Old Header" style="width:500px;">
-	<br>
-	<a href="images/archive/HeaderOld.png" target=_blank class="button">Old Header</a>
-	<br><br><br>
-	<img src="images/archive/HeaderTest.png" alt="Test Header" style="width:500px;">
-	<br>
-	<a href="images/archive/HeaderTest.png" target=_blank class="button">Test Header</a>
-	<br><br><br>
-	<img src="images/archive/OldLogo.png" alt="Old Logo" style="width:500px;">
-	<br>
-	<a href="images/archive/OldLogo.png" target=_blank class="button">Old Logo</a>
-	
-
-</div>
-
+	<p>Welcome to Lynx Gaming's WIP website! </p>
+	<p>As you can probably see, this website is still very much a work in progress. </p>
+	<p>The goal of this website is to see how close I can get to a dark version of our current website with the limited knowledge I have about HTML and CSS. </p>
+	</div>
+  
   <div class="column side">
     <br><br>
 	<a href="ts3server://ts.lynxgaming.net?port=9987" class="button">Join Us On TeamSpeak!</a>
@@ -88,8 +59,9 @@
 </div>
 
 <div class="footer">
-  <p>Footer</p>
+  <a href="https://unitedsurvivors.org/contact-us/" target=_blank>Privacy</a>
+  <a href="https://unitedsurvivors.org/contact-us/" target=_blank>Contact</a>
 </div>
-
+  
 </body>
 </html>
